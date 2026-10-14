@@ -5,14 +5,12 @@ import com.back.p67260811.domain.post.comment.entity.PostComment;
 import com.back.p67260811.global.exception.ServiceException;
 import com.back.p67260811.global.jpa.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@Getter
 @Entity
 public class Post extends BaseEntity {
     private String title;
@@ -79,5 +77,21 @@ public class Post extends BaseEntity {
         if(!this.author.equals(actor)) {
             throw new ServiceException("403-2", "삭제 권한이 없습니다.");
         }
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Member getAuthor() {
+        return author;
+    }
+
+    public List<PostComment> getComments() {
+        return comments;
     }
 }
