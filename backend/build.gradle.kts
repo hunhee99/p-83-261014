@@ -5,6 +5,7 @@ plugins {
     kotlin("jvm") version "2.3.21"
     kotlin("plugin.spring") version "2.3.21"
     kotlin("plugin.lombok") version "2.3.21"
+    kotlin("plugin.jpa") version "2.3.21"
 }
 
 group = "com.back"
@@ -41,6 +42,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    implementation("tools.jackson.module:jackson-module-kotlin")
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
@@ -60,6 +62,11 @@ kotlin {
     }
 }
 
+allOpen {
+    annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
+    annotation("jakarta.persistence.Embeddable")
+}
 
 
 tasks.withType<Test> {
