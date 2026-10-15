@@ -124,11 +124,11 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         }
 
         UserDetails user = new SecurityUser(
-                member.getId(),
                 member.getUsername(),
-                "",
                 member.getNickname(),
-                member.getAuthorities()
+                member.getAuthorities(),
+                member.getId(),
+                ""
         );
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(
